@@ -1,0 +1,33 @@
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,700&subset=latin,cyrillic);
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700);
+
+
+#dropdown-menu-2btn-0 .hide-buttons [data-button] {
+  display: none !important;
+}
+#dropdown-menu-2btn-0 .navbar-brand a {
+  font-size: 30px;
+  font-family: 'Playfair Display', sans-serif;
+}
+#dropdown-menu-2btn-0 .nav .link,
+#dropdown-menu-2btn-0 .dropdown-item {
+  font-size: 1.2em;
+  color: #000000;
+  font-family: 'Lora', serif;
+}
+#dropdown-menu-2btn-0 .navbar,
+#dropdown-menu-2btn-0 .dropdown-menu {
+  background: #a7b0c3;
+}
+#dropdown-menu-2btn-0 .dropdown-menu .dropdown-toggle[aria-expanded="true"],
+#dropdown-menu-2btn-0 .dropdown-menu a:hover,
+#dropdown-menu-2btn-0 .dropdown-menu a:focus {
+  background: #9ba5bb;
+}
+#dropdown-menu-2btn-0 .navbar-toggler {
+  color: #000000;
+}
+#header4-1 H1 {
+  text-align: left;
+  font-size: 72px;
+}
