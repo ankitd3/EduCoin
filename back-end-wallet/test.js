@@ -5,7 +5,7 @@ let my = {
     pub: '0356f3af39823798e08dc8e2a92c90ee530a0f9548d9321ae924e78c3ca00a039b'
 }
 
-let receiver = '02aa2d537f5fb6720e297037e27275d3d9c7f21c917da2b38a79f2c07b9e5783e8'
+let receiver = '32aa2d536f5fb6721e297037e27275d3d9c7f21c917da2b38a79f2c07b9e5783e8'
 
 async function testSend() {
     let result = await wallet.sendCoin(my, receiver, 10)
@@ -15,8 +15,20 @@ async function testSend() {
 //testSend()
 
 async function testRate() {
-    let result = await wallet.sendRating(my, receiver, 9)
+    let result = await wallet.sendRating(my, receiver, 6, 'python')
     console.log(result)
 }
 
-testRate()
+async function generate_user() {
+
+
+	var user=wallet.genWallet()
+
+	console.log(user)
+
+    let result = await wallet.addUser(user, 2000, 50)
+    console.log(result)
+
+}
+generate_user()
+//testRate()

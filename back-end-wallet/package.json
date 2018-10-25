@@ -1,0 +1,17 @@
+{
+  "name": "coin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "lotion": "^0.1.19",
+    "secp256k1": "^3.5.0",
+    "sha": "^2.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
