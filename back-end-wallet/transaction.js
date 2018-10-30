@@ -16,10 +16,16 @@ let hashTx = (tx) => {
 
 let signTx = (privKey, tx) => {
     let txHash = hashTx(tx);
+    //console.log("Transaction hash")
+    //console.log(toBuffer(txHash))
     let { signature } = secp256k1.sign(txHash, toBuffer(privKey))
+    //console.log("Signature")
+    //console.log(signature)
 
     let signedTx = Object.assign({}, tx) // make a copy of tx
     signedTx.signature = signature.toString('hex') // add signature field
+    //console.log("Added Signature Field")
+    //console.log(signedTx)
     return signedTx
 }
 

@@ -54,11 +54,11 @@ let getBalance = async (address) => {
     return state.balances[address] || 0
 }
 
-let sendRating = async (wallet, validator, rate, skill) => {
-    let claimant = wallet.pub //sender's public key 
+let sendRating = async (wallet, claimant, rate, skill) => {
+    let validator = wallet.pub //sender's public key 
     //current announced field for sender
     let currentState = await axios.get(url + '/state').then(res => res.data)
-    let nonce = currentState.nonces[claimant] || 0
+    let nonce = currentState.nonces[validator] || 0
     //tr object
     //let tx = { rate, skill, sender, receiver, nonce }
 
