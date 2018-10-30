@@ -9,13 +9,15 @@ let genWallet = () => {
     return {priv: priv, pub: pub}
 }
 
-let addUser = async (wallet, balance, erp) => {
-    let public = wallet.pub
+let addUser = async (wallet, amount, erp) => {
+    let user = wallet.pub
     let currentState = await axios.get(url + '/state').then(res => res.data)
     let nonce = currentState.nonces[public] || 0
 
-    let tx = { balance, erp, public, nonce }
-    
+    //let tx = { balance, erp, public, nonce }
+
+    let tx = {0,user, 0 , erp, 0, 0, amount, nonce}
+
     let signedTx = signTx(wallet.priv, tx)
 
     let result = await axios.post(url + '/txs', signedTx)
@@ -27,7 +29,10 @@ let sendCoin = async (wallet, receiver, amount) => {
     let currentState = await axios.get(url + '/state').then(res => res.data)
     let nonce = currentState.nonces[sender] || 0
 
-    let tx = { amount, sender, receiver, nonce }
+    //let tx = { amount, sender, receiver, nonce }
+
+    let tx = {2,sender, receiver, 0, 0, 0, amount, nonce}
+
     let signedTx = signTx(wallet.priv, tx)
 
     let result = await axios.post(url + '/txs', signedTx)
@@ -39,14 +44,15 @@ let getBalance = async (address) => {
     return state.balances[address] || 0
 }
 
-let sendRating = async (wallet, receiver, rate, skill) => {
-    let sender = wallet.pub //sender's public key 
+let sendRating = async (wallet, claimant, rate, skill) => {
+    let validator = wallet.pub //sender's public key 
     //current announced field for sender
     let currentState = await axios.get(url + '/state').then(res => res.data)
     let nonce = currentState.nonces[sender] || 0
-
     //tr object
-    let tx = { rate, skill, sender, receiver, nonce }
+    //let tx = { rate, skill, sender, receiver, nonce }
+    let tx = {1,validator,claimant,0,rate,skill,0,nonce}
+    
     let signedTx = signTx(wallet.priv, tx)
 
     //post
@@ -54,6 +60,12 @@ let sendRating = async (wallet, receiver, rate, skill) => {
     return result.data
 }
 
+// tx = {type ,sender, receiver, erp, rate, skill, amount, nonce}
+// case 1 (genWallet) = {0,user, Null, erp, Null, Null, amount, nonce}
+
+// 2 (rate) = {1,validator, claimant, Null, rate, skill, Null, nonce}
+
+// 2 (send coins) = {2,sender, receiver, Null, Null, Null, amount, nonce}
 
 module.exports = {
     genWallet,
