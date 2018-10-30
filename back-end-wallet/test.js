@@ -7,15 +7,15 @@ let my = {
 
 let receiver = '32aa2d536f5fb6721e297037e27275d3d9c7f21c917da2b38a79f2c07b9e5783e8'
 
-async function testSend() {
-    let result = await wallet.sendCoin(my, receiver, 10)
+async function testSend(from,to,amount) {
+    let result = await wallet.sendCoin(from, to, amount)
     console.log(result)
 }
 
 //testSend()
 
 async function testRate() {
-    let result = await wallet.sendRating(my, receiver, 6, 'python')
+    let result = await wallet.sendRating(my, receiver, 2, 'python')
     console.log(result)
 }
 
@@ -30,5 +30,12 @@ async function generate_user() {
     console.log(result)
 
 }
-generate_user()
-//testRate()
+async function claim(claimant,skill) {
+    let result = await wallet.claim(claimant, skill)
+    console.log(result)
+}
+
+claim(my,'php')
+//testSend(my,receiver,100)
+//generate_user()
+testRate()

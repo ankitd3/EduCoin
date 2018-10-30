@@ -134,6 +134,10 @@ let handler = (state, tx) => {
         state.balances[tx.receiver] = receiverBalance + tx.amount
         state.nonces[tx.sender] = (state.nonces[tx.sender] || 0) + 1
     }
+    if(tx.type == 3){
+        console.log("In type 3")
+        state.Rating[tx.claimant][tx.skill]={}
+    }
 }
 
 app.use(handler)

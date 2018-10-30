@@ -5,7 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "axios": "^0.18.0",
+    "exact-math": "^1.0.0",
     "lotion": "^0.1.19",
+    "math-abs": "^1.0.2",
     "secp256k1": "^3.5.0",
     "sha": "^2.0.1"
   },
